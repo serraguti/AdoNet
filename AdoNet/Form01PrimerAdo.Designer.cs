@@ -69,6 +69,7 @@ namespace AdoNet
             this.btnLeerDatos.TabIndex = 2;
             this.btnLeerDatos.Text = "Leer datos";
             this.btnLeerDatos.UseVisualStyleBackColor = true;
+            this.btnLeerDatos.Click += new System.EventHandler(this.btnLeerDatos_Click);
             // 
             // label1
             // 
