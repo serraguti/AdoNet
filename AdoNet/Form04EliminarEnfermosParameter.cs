@@ -46,5 +46,26 @@ namespace AdoNet
             this.reader.Close();
             this.cn.Close();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            String inscripcion = this.txtInscripcion.Text;
+            string sql = "delete from enfermo where inscripcion=@INSCRIPCION";
+            SqlParameter paramInscripcion = 
+                new SqlParameter("@INSCRIPCION", inscripcion);
+            //paramInscripcion.ParameterName = "@INSCRIPCION";
+            //paramInscripcion.Value = inscripcion;
+            //paramInscripcion.DbType = DbType.String;
+            //paramInscripcion.SqlDbType = SqlDbType.NVarChar;
+            this.com.Parameters.Add(paramInscripcion);
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = sql;
+            this.cn.Open();
+            int eliminados = this.com.ExecuteNonQuery();
+            this.cn.Close();
+            //LIMPIAR PARAMETROS
+            this.com.Parameters.Clear();
+            this.CargarEnfermos();
+        }
     }
 }
