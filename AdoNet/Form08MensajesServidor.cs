@@ -9,6 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+#region PROCEDIMIENTOS ALMACENADOS
+
+//CREATE procedure INSERTARDEPARTAMENTO
+//(@numero int, @nombre nvarchar(50), @localidad nvarchar(50))
+//as
+
+//    --NO QUEREMOS LOCALIDADES EN TERUEL
+//	if (@localidad = 'TERUEL')
+//	begin
+//        print 'Teruel no existe'
+//	end
+//	else
+//	begin 
+//		insert into dept values (@numero, @nombre, @localidad)
+//	end
+//go
+#endregion
+
 namespace AdoNet
 {
     public partial class Form08MensajesServidor : Form
@@ -22,9 +40,15 @@ namespace AdoNet
             InitializeComponent();
             String cadenaconexion = @"Data Source=LOCALHOST;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=SA;Password=MCSD2021";
             this.cn = new SqlConnection(cadenaconexion);
+            this.cn.InfoMessage += Cn_InfoMessage;
             this.com = new SqlCommand();
             this.com.Connection = this.cn;
             this.CargarDepartamentos();
+        }
+
+        private void Cn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+        {
+            this.lblMensajes.Text = e.Message;
         }
 
         private void CargarDepartamentos()
@@ -51,6 +75,7 @@ namespace AdoNet
 
         private void btnNuevoDepartamento_Click(object sender, EventArgs e)
         {
+            this.lblMensajes.Text = "";
             int numero = int.Parse(this.txtNumero.Text);
             string nombre = this.txtNombre.Text;
             string localidad = this.txtLocalidad.Text;
