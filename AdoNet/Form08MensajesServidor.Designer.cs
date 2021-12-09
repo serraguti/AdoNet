@@ -97,6 +97,7 @@ namespace AdoNet
             this.btnNuevoDepartamento.TabIndex = 6;
             this.btnNuevoDepartamento.Text = "Nuevo departamento";
             this.btnNuevoDepartamento.UseVisualStyleBackColor = true;
+            this.btnNuevoDepartamento.Click += new System.EventHandler(this.btnNuevoDepartamento_Click);
             // 
             // lblMensajes
             // 
