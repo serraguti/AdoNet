@@ -17,7 +17,7 @@ namespace AdoNet
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form04EliminarEnfermosParameter());
+            Application.Run(new Form08MensajesServidor());
         }
     }
 }
