@@ -133,6 +133,7 @@ namespace AdoNet
             this.btnActualizarDatos.TabIndex = 10;
             this.btnActualizarDatos.Text = "Actualizar datos";
             this.btnActualizarDatos.UseVisualStyleBackColor = false;
+            this.btnActualizarDatos.Click += new System.EventHandler(this.btnActualizarDatos_Click);
             // 
             // lblMensajes
             // 
