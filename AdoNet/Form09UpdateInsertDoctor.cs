@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 #region PROCEDIMIENTO ALMACENADO
 //CREATE PROCEDURE ACTUALIZARDOCTOR
@@ -45,7 +46,11 @@ namespace AdoNet
         public Form09UpdateInsertDoctor()
         {
             InitializeComponent();
-            String cadenaconexion = @"Data Source=LOCALHOST;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=SA;Password=MCSD2021";
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .AddJsonFile("config.json", true, true);
+            IConfigurationRoot config = builder.Build();
+            String cadenaconexion = config["CadenaHospitalTajamar"];
+            
             this.cn = new SqlConnection(cadenaconexion);
             this.cn.InfoMessage += Cn_InfoMessage;
             this.com = new SqlCommand();
