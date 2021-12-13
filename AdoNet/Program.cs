@@ -17,7 +17,7 @@ namespace AdoNet
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form12EmpleadosOficios());
+            Application.Run(new Form13DepartamentosCRUD());
         }
     }
 }

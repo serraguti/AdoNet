@@ -71,5 +71,36 @@ namespace AdoNet.Context
             this.com.Parameters.Clear();
             return empleados;
         }
+
+        public int UpdateEmpleadosOficio(string oficio, int incremento)
+        {
+            string sql = "update emp set salario = salario + @INCREMENTO "
+                + " where oficio=@OFICIO";
+            this.com.Parameters.AddWithValue("@INCREMENTO", incremento);
+            this.com.Parameters.AddWithValue("@OFICIO", oficio);
+            this.com.CommandType = System.Data.CommandType.Text;
+            this.com.CommandText = sql;
+            this.cn.Open();
+            int modificados = this.com.ExecuteNonQuery();
+
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            return modificados;
+        }
+
+        public int DeleteEmpleado(int idempleado)
+        {
+            string sql = "delete from emp where emp_no=@EMPNO";
+            this.com.Parameters.AddWithValue("@EMPNO", idempleado);
+            this.com.CommandType = System.Data.CommandType.Text;
+            this.com.CommandText = sql;
+            this.cn.Open();
+
+            int eliminados = this.com.ExecuteNonQuery();
+
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            return eliminados;
+        }
     }
 }

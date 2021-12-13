@@ -37,6 +37,10 @@ namespace AdoNet
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIncremento = new System.Windows.Forms.TextBox();
+            this.btnIncrementar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +73,7 @@ namespace AdoNet
             // 
             this.btnMostrarEmpleados.Location = new System.Drawing.Point(307, 22);
             this.btnMostrarEmpleados.Name = "btnMostrarEmpleados";
-            this.btnMostrarEmpleados.Size = new System.Drawing.Size(249, 87);
+            this.btnMostrarEmpleados.Size = new System.Drawing.Size(249, 60);
             this.btnMostrarEmpleados.TabIndex = 3;
             this.btnMostrarEmpleados.Text = "Mostrar empleados";
             this.btnMostrarEmpleados.UseVisualStyleBackColor = true;
@@ -81,10 +85,11 @@ namespace AdoNet
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lsvEmpleados.FullRowSelect = true;
             this.lsvEmpleados.HideSelection = false;
             this.lsvEmpleados.Location = new System.Drawing.Point(29, 168);
             this.lsvEmpleados.Name = "lsvEmpleados";
-            this.lsvEmpleados.Size = new System.Drawing.Size(684, 246);
+            this.lsvEmpleados.Size = new System.Drawing.Size(763, 246);
             this.lsvEmpleados.TabIndex = 4;
             this.lsvEmpleados.UseCompatibleStateImageBehavior = false;
             this.lsvEmpleados.View = System.Windows.Forms.View.Details;
@@ -104,11 +109,52 @@ namespace AdoNet
             this.columnHeader3.Text = "Salario";
             this.columnHeader3.Width = 200;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(599, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 37);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Incremento:";
+            // 
+            // txtIncremento
+            // 
+            this.txtIncremento.Location = new System.Drawing.Point(599, 54);
+            this.txtIncremento.Name = "txtIncremento";
+            this.txtIncremento.Size = new System.Drawing.Size(182, 43);
+            this.txtIncremento.TabIndex = 6;
+            // 
+            // btnIncrementar
+            // 
+            this.btnIncrementar.Location = new System.Drawing.Point(599, 104);
+            this.btnIncrementar.Name = "btnIncrementar";
+            this.btnIncrementar.Size = new System.Drawing.Size(182, 44);
+            this.btnIncrementar.TabIndex = 7;
+            this.btnIncrementar.Text = "Incrementar";
+            this.btnIncrementar.UseVisualStyleBackColor = true;
+            this.btnIncrementar.Click += new System.EventHandler(this.btnIncrementar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.ForeColor = System.Drawing.Color.Red;
+            this.btnEliminar.Location = new System.Drawing.Point(307, 88);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(249, 60);
+            this.btnEliminar.TabIndex = 8;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // Form12EmpleadosOficios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 426);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnIncrementar);
+            this.Controls.Add(this.txtIncremento);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lsvEmpleados);
             this.Controls.Add(this.btnMostrarEmpleados);
             this.Controls.Add(this.label2);
@@ -133,5 +179,9 @@ namespace AdoNet
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtIncremento;
+        private System.Windows.Forms.Button btnIncrementar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

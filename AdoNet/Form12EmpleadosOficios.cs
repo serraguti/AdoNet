@@ -35,10 +35,51 @@ namespace AdoNet
             foreach (Empleado emp in empleados)
             {
                 ListViewItem item = new ListViewItem();
+                item.Tag = emp.IdEmpleado;
                 item.Text = emp.Apellido;
                 item.SubItems.Add(emp.Oficio);
                 item.SubItems.Add(emp.Salario.ToString());
                 this.lsvEmpleados.Items.Add(item);
+            }
+        }
+
+        private void btnIncrementar_Click(object sender, EventArgs e)
+        {
+            string oficio = this.cmbOficios.SelectedItem.ToString();
+            int incremento = int.Parse(this.txtIncremento.Text);
+            int modificados = this.context.UpdateEmpleadosOficio(oficio, incremento);
+            List<Empleado> empleados = this.context.GetEmpleadosOficio(oficio);
+            this.lsvEmpleados.Items.Clear();
+            foreach (Empleado emp in empleados)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = emp.IdEmpleado;
+                item.Text = emp.Apellido;
+                item.SubItems.Add(emp.Oficio);
+                item.SubItems.Add(emp.Salario.ToString());
+                this.lsvEmpleados.Items.Add(item);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (this.lsvEmpleados.SelectedItems.Count != 0)
+            {
+                ListViewItem seleccionado = this.lsvEmpleados.SelectedItems[0];
+                int idempleado = int.Parse(seleccionado.Tag.ToString());
+                int eliminado = this.context.DeleteEmpleado(idempleado);
+                String oficio = this.cmbOficios.SelectedItem.ToString();
+                List<Empleado> empleados = this.context.GetEmpleadosOficio(oficio);
+                this.lsvEmpleados.Items.Clear();
+                foreach (Empleado emp in empleados)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Tag = emp.IdEmpleado;
+                    item.Text = emp.Apellido;
+                    item.SubItems.Add(emp.Oficio);
+                    item.SubItems.Add(emp.Salario.ToString());
+                    this.lsvEmpleados.Items.Add(item);
+                }
             }
         }
     }
